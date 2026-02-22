@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary Mom & Dad!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --rose: #ff4d6d;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0f0c29;
+            background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: var(--rose);
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(105vh) rotate(360deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 20px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+            margin: 20px 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .photo-frame {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        /* NEW NEAT FRAME FOR FAMILY PIC */
+        .family-pic-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+
+        .family-pic {
+            width: 85%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px; /* Neat rectangular curved corners */
+            border: 5px double var(--gold); /* Elegant double border */
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .family-pic:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .years {
+            font-weight: 600;
+            color: var(--rose);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            padding: 0 10px;
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .wish-btn {
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        .wish-btn:hover {
+            background: var(--white);
+            box-shadow: 0 0 20px var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="heart-container"></div>
+
+    <div class="container">
+        <div class="photo-frame">
+            <img src="https://i.postimg.cc/cJYRfn71/Whats-App-Image-2026-02-22-at-20-16-11.jpg" alt="Father" class="profile-pic">
+            <img src="https://i.postimg.cc/jq6MGG7n/Whats-App-Image-2026-02-22-at-20-14-41.jpg" alt="Mother" class="profile-pic">
+        </div>
+
+        <div class="family-pic-container">
+            <img src="https://i.postimg.cc/0Qzqt9QP/kontechops.jpg" alt="Family" class="family-pic">
+        </div>
+
+        <h1>Happy Marriage Anniversary!</h1>
+        <span class="years">Cheers to Another Beautiful Year Together!</span>
+
+        <p>
+            To the couple who taught me the meaning of love and commitment. 
+            May your lives be filled with as much happiness as you have given me. 
+            Wishing you a day as special as both of you are!
+        </p>
+
+        <p class="footer-note">With all my love and respect.</p>
+        
+        <button class="wish-btn" onclick="celebrate()">Click for Love! ❤️</button>
+    </div>
+
+    <script>
+        function createHearts() {
+            const container = document.getElementById('heart-container');
+            const heartIcons = ['❤️', '💖', '✨', '🌸'];
+            
+            for(let i = 0; i < 30; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart-particle';
+                heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.opacity = Math.random();
+                container.appendChild(heart);
+            }
+        }
+
+        function celebrate() {
+            alert("Happy Anniversary Mom & Dad! Wishing you a lifetime of love! 🥂✨");
+        }
+
+        createHearts();
+    </script>
+</body>
+</html>
